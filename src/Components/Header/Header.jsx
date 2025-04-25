@@ -8,6 +8,7 @@ import {
   NavbarBrand,
   NavbarToggler,
 } from "reactstrap";
+import Search from "./Search";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,16 +61,9 @@ const Header = () => {
                     Login
                   </Link>
                 </NavItem>
-                <NavItem>
-                  <Link to="/registration" className="navlink">
-                    Sign Up
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <i className="fas fa-search"></i>
-                </NavItem>
               </Nav>
             </div>
+            <Search />
           </Collapse>
         </Navbar>
       </div>

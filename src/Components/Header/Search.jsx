@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "./Header.css";
 
 const Search = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -15,16 +16,19 @@ const Search = () => {
 
   return (
     <div>
-      <div className="">
+      <div className="searchContainer">
+        <i className="fas fa-search" onClick={toggleSearch}></i>
         {isVisible && (
-          <div>
-            <input 
-              className="searchbox" 
+          <div className="searchboxContainer">
+            <input
+              className="searchbox"
               value={searchTerm}
               onChange={handleSearch}
               placeholder="Search..."
             />
-            <span className="searchHide" onClick={toggleSearch}>X</span>
+            <span className="searchHide" onClick={toggleSearch}>
+              X
+            </span>
           </div>
         )}
       </div>

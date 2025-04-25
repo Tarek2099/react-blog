@@ -1,40 +1,10 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  setBlogsFailure,
-  setBlogsStart,
-  setBlogsSuccess,
-} from "../../../Redux/blogsSlice.jsx";
-import { api } from "../../../services/api.jsx";
-import LoadingSpinner from "../../Common/LoadingSpinner.js";
-import Sidebar from "../../Sidebar/Sidebar.js";
+import React from "react";
+import { UseContext } from "../../Context/MyContext.jsx";
+import Sidebar from "../../Sidebar/Sidebar.jsx";
 import Blog from "./Blog.jsx";
 
 const Blogs = () => {
-  const dispatch = useDispatch();
-  const { blogs, loading, error } = useSelector((state) => state.blogs);
-
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        dispatch(setBlogsStart());
-        const data = await api.getBlogs();
-        dispatch(setBlogsSuccess(data));
-      } catch (error) {
-        dispatch(setBlogsFailure(error.message));
-      }
-    };
-
-    fetchBlogs();
-  }, [dispatch]);
-
-  if (loading) {
-    return <LoadingSpinner message="Loading blog posts..." />;
-  }
-
-  if (error) {
-    return <div className="error-container">Error loading blogs: {error}</div>;
-  }
+  const blogs = UseContext();
 
   return (
     <div className="container blog">

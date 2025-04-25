@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import { useAuthContext } from "../../../Context/AuthContext";
 
 const Comments = () => {
-  const { isAuthenticated } = useAuthContext();
   const [comment, setComment] = useState("");
   const [error, setError] = useState("");
 
